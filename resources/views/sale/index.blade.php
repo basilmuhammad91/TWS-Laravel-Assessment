@@ -378,6 +378,7 @@
 
 <!-- FUNCTION TO RUN AJAX ON ONCHANGE UPDATE -->
 <script type="text/javascript">
+	var update_grand_total = 0;
 	function get_quantity_for_update(e,count)
 	{
 		var id = e.value;
@@ -387,7 +388,8 @@
 					// alert(res.response.retail_price);
 					document.getElementById('update_unitPrice_'+count).value=res.response.retail_price;
 					var q=document.getElementById('update_quantity_'+count).value;
-					document.getElementById('update_total_'+count).value=res.response.retail_price*q;
+					update_grand_total+= document.getElementById('update_total_'+count).value=res.response.retail_price*q;
+					document.getElementById('update_grand_total').value=update_grand_total;
 
 				},
 				error: function(ts) 
@@ -403,6 +405,8 @@
 					//alert(JSON.stringify(res));
 					var p=document.getElementById('update_unitPrice_'+count).value
 					document.getElementById('update_total_'+count).value=p*q;
+					update_grand_total+= document.getElementById('update_total_'+count).value=res.response.retail_price*q;
+					document.getElementById('update_grand_total').value=update_grand_total;
 
 	}
 </script>
